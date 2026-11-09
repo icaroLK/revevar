@@ -10,11 +10,7 @@ A freelance rebuild of an existing (very basic) replay site: no filters, no stru
 
 ## Stack
 
-TBD — documented in [docs/architecture.md](docs/architecture.md) as decisions are made.
-
-## Roadmap
-
-See [docs/decisions.md](docs/decisions.md) and [CHANGELOG.md](CHANGELOG.md) for what's shipped and what's next.
+TBD.
 
 ---
 

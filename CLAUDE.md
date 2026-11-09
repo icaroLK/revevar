@@ -4,7 +4,7 @@ Instructions for Claude Code working in this repo.
 
 ## Project
 
-Reve VAR — instant-replay website for a sports field. See [README.md](README.md) and `docs/` for context. Full background (sprint plan, pricing, open questions) lives in this session's memory, not in this repo.
+Reve VAR — instant-replay website for a sports field. See [README.md](README.md) for context. Full background (sprint plan, pricing, open questions) lives in this session's memory, not in this repo.
 
 ## Scope discipline
 
