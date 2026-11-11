@@ -1,11 +1,9 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
 import { cn } from '../../lib/cn'
+import { useFocusTrap } from '../../lib/useFocusTrap'
 import { IconButton } from './IconButton'
-
-const FOCUSABLE_SELECTOR =
-  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 type ModalProps = {
   open: boolean
@@ -23,46 +21,7 @@ export function Modal({
   children,
   className,
 }: ModalProps) {
-  const dialogRef = useRef<HTMLDivElement>(null)
-  const previouslyFocused = useRef<HTMLElement | null>(null)
-
-  useEffect(() => {
-    if (!open) return
-
-    previouslyFocused.current = document.activeElement as HTMLElement | null
-    const node = dialogRef.current
-    node?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)?.focus()
-
-    const originalOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        onClose()
-        return
-      }
-      if (e.key === 'Tab' && node) {
-        const items = node.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
-        if (items.length === 0) return
-        const first = items[0]
-        const last = items[items.length - 1]
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault()
-          last.focus()
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault()
-          first.focus()
-        }
-      }
-    }
-
-    document.addEventListener('keydown', onKeyDown)
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = originalOverflow
-      previouslyFocused.current?.focus()
-    }
-  }, [open, onClose])
+  const dialogRef = useFocusTrap<HTMLDivElement>(open, onClose)
 
   if (!open) return null
 

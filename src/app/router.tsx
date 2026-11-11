@@ -1,22 +1,31 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 import { DevUiPage } from '../features/dev-ui/DevUiPage'
+import { Layout } from './Layout'
+import { NotFoundPage } from './NotFoundPage'
+import { RouteErrorBoundary } from './RouteErrorBoundary'
 
-// Placeholder route tree. Real pages replace this starting at M4 (app shell) / M5 (Início).
 const routes: RouteObject[] = [
   {
-    path: '/',
-    element: (
-      <main className="flex min-h-screen items-center justify-center p-6 text-center">
-        <div>
-          <h1 className="font-display text-5xl uppercase text-text">
-            Revê VAR
-          </h1>
-          <p className="mt-3 text-muted">
-            Scaffold pronto. Páginas reais chegam nos próximos milestones.
-          </p>
-        </div>
-      </main>
-    ),
+    element: <Layout />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      {
+        // Placeholder index route. Real Início page arrives at M5.
+        index: true,
+        element: (
+          <main className="mx-auto flex min-h-[60vh] max-w-[1180px] flex-col items-center justify-center gap-3 p-7 text-center">
+            <title>Revê VAR</title>
+            <h1 className="font-display text-5xl uppercase text-text">
+              Revê VAR
+            </h1>
+            <p className="text-muted">
+              Scaffold pronto. Páginas reais chegam nos próximos milestones.
+            </p>
+          </main>
+        ),
+      },
+      { path: '*', element: <NotFoundPage /> },
+    ],
   },
 ]
 
