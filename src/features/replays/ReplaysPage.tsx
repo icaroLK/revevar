@@ -300,11 +300,12 @@ export function ReplaysPage() {
         ) : (
           <>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-[repeat(auto-fill,minmax(500px,1fr))]">
-              {items.map((event) => (
+              {items.map((event, index) => (
                 <ReplayCard
                   key={event.id}
                   event={event}
                   camera={filters.camera}
+                  priority={index === 0}
                 />
               ))}
             </div>

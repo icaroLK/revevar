@@ -10,6 +10,9 @@ type ThumbnailProps = {
   status?: ThumbnailStatus
   showPlay?: boolean
   className?: string
+  /** The hero "último replay" thumbnail is the LCP candidate — load it eagerly
+   * instead of lazily so the browser doesn't wait to discover it (spec §11). */
+  priority?: boolean
 }
 
 export function Thumbnail({
@@ -19,6 +22,7 @@ export function Thumbnail({
   status = 'ready',
   showPlay = false,
   className,
+  priority = false,
 }: ThumbnailProps) {
   return (
     <div
@@ -31,7 +35,8 @@ export function Thumbnail({
         <img
           src={thumbnailUrl}
           alt=""
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : undefined}
           className="h-full w-full object-cover"
         />
       ) : (

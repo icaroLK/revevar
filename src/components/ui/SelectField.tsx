@@ -28,6 +28,7 @@ export function SelectField({
       htmlFor={id}
       className={cn(
         'flex min-w-[120px] flex-col gap-0.5 rounded-md border border-border bg-surface px-3 py-1.5',
+        'has-[select:focus-visible]:outline has-[select:focus-visible]:outline-2 has-[select:focus-visible]:outline-offset-2 has-[select:focus-visible]:outline-red',
         className,
       )}
     >

@@ -97,7 +97,11 @@ export const VideoPlayer = forwardRef<VideoPlayerHandle, VideoPlayerProps>(
         tabIndex={0}
         onKeyDown={onKeyDown}
         className={cn(
-          'relative aspect-video overflow-hidden rounded-player bg-thumb outline-none',
+          'relative aspect-video overflow-hidden rounded-player bg-thumb outline-none focus-visible:outline-red',
+          // Tailwind's outline-style utilities all read --tw-outline-style, and
+          // outline-none sets that variable to "none" — reset it so the
+          // focus-visible ring below can actually turn the outline back on.
+          'focus-visible:[--tw-outline-style:solid] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
           className,
         )}
       >

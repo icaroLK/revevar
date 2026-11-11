@@ -180,6 +180,7 @@ function HeroReplayCard({
             : undefined
         }
         showPlay
+        priority
         className="rounded-[14px]"
       />
       <div className="flex items-center justify-between gap-3 px-1.5 pb-1 pt-3.5">
@@ -248,6 +249,7 @@ function FeaturedReplayMobile({
           status={camera1?.status}
           cameraLabel={`${replay.clips.length} ângulos`}
           showPlay
+          priority
         />
         <div className="flex items-center justify-between px-1 pb-0.5">
           <span className="text-lg font-bold">

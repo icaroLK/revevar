@@ -20,7 +20,7 @@ export function Chip({
       aria-pressed={active}
       className={cn(
         'inline-flex h-11 flex-none cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border px-4 text-sm font-semibold tabular-nums transition active:scale-[0.96]',
-        'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-tint',
+        'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red',
         active
           ? 'border-red bg-red-tint text-white'
           : 'border-border text-muted hover:text-text',

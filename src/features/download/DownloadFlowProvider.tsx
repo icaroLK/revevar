@@ -193,7 +193,7 @@ export function DownloadFlowProvider({ children }: { children: ReactNode }) {
               autoComplete="email"
               aria-invalid={Boolean(errors.email)}
               {...register('email')}
-              className="h-11 rounded-md border border-border bg-surface px-3 text-sm text-text outline-none focus:border-border-strong"
+              className="h-11 rounded-md border border-border bg-surface px-3 text-sm text-text outline-none focus-visible:border-border-strong focus-visible:[--tw-outline-style:solid] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
             />
             {errors.email && (
               <span className="text-xs text-red">{errors.email.message}</span>
@@ -208,7 +208,7 @@ export function DownloadFlowProvider({ children }: { children: ReactNode }) {
               type="text"
               autoComplete="name"
               {...register('name')}
-              className="h-11 rounded-md border border-border bg-surface px-3 text-sm text-text outline-none focus:border-border-strong"
+              className="h-11 rounded-md border border-border bg-surface px-3 text-sm text-text outline-none focus-visible:border-border-strong focus-visible:[--tw-outline-style:solid] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
             />
           </label>
 

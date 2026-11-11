@@ -11,9 +11,16 @@ import type { CameraFilter } from './filters'
 type ReplayCardProps = {
   event: ReplayEvent
   camera: CameraFilter
+  /** The first card in the list is the LCP candidate — load its thumbnail
+   * eagerly instead of lazily (spec §11). */
+  priority?: boolean
 }
 
-export function ReplayCard({ event, camera }: ReplayCardProps) {
+export function ReplayCard({
+  event,
+  camera,
+  priority = false,
+}: ReplayCardProps) {
   const location = useLocation()
   const { requestDownload } = useDownloadFlow()
   const visibleClips =
@@ -48,6 +55,7 @@ export function ReplayCard({ event, camera }: ReplayCardProps) {
             status={clip.status}
             cameraLabel={clip.cameraLabel}
             showPlay={clip.cameraIndex === firstVisibleIndex}
+            priority={priority && clip.cameraIndex === firstVisibleIndex}
           />
         ))}
       </Link>

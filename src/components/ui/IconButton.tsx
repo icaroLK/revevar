@@ -42,7 +42,7 @@ export function IconButton(props: IconButtonProps) {
 
   const classes = cn(
     'inline-flex h-11 w-11 flex-none cursor-pointer items-center justify-center rounded-md transition active:scale-[0.94]',
-    'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-tint',
+    'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red',
     'disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100',
     variantClasses[variant],
     className,

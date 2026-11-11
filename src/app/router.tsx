@@ -4,7 +4,6 @@ import { DevUiPage } from '../features/dev-ui/DevUiPage'
 import { HomePage } from '../features/home/HomePage'
 import { ParaClubesPage } from '../features/para-clubes/ParaClubesPage'
 import { PrivacyPage } from '../features/privacy/PrivacyPage'
-import { ReplayDetailPage } from '../features/replay-detail/ReplayDetailPage'
 import { ReplaysPage } from '../features/replays/ReplaysPage'
 import { Layout } from './Layout'
 import { NotFoundPage } from './NotFoundPage'
@@ -17,7 +16,15 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'replays', element: <ReplaysPage /> },
-      { path: 'replays/:eventId', element: <ReplayDetailPage /> },
+      {
+        // Code-split (spec §11): the video player + react-hook-form/zod form
+        // are the heaviest page in the app and not needed until visited.
+        path: 'replays/:eventId',
+        lazy: () =>
+          import('../features/replay-detail/ReplayDetailPage').then((m) => ({
+            Component: m.ReplayDetailPage,
+          })),
+      },
       { path: 'como-funciona', element: <ComoFuncionaPage /> },
       { path: 'para-clubes', element: <ParaClubesPage /> },
       { path: 'privacidade', element: <PrivacyPage /> },
