@@ -495,7 +495,7 @@ function LeadLine({
       <button
         type="button"
         onClick={onForget}
-        className="underline hover:text-text"
+        className="cursor-pointer underline hover:text-text"
       >
         trocar
       </button>

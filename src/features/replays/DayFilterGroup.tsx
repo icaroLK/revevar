@@ -19,7 +19,7 @@ function formatCustomDateLabel(yyyyMmDd: string): string {
 
 function segmentClasses(active: boolean): string {
   return cn(
-    'h-10 whitespace-nowrap rounded-[9px] px-4 text-sm transition active:scale-[0.96]',
+    'h-10 cursor-pointer whitespace-nowrap rounded-[9px] px-4 text-sm transition active:scale-[0.96]',
     active
       ? 'bg-text font-semibold text-bg'
       : 'bg-transparent font-medium text-muted hover:text-text',

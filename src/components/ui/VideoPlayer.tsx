@@ -176,7 +176,7 @@ export function PlayerControls({
         type="button"
         aria-label={playing ? 'Pausar' : 'Reproduzir'}
         onClick={onTogglePlay}
-        className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-red text-white active:scale-[0.96]"
+        className="flex h-11 w-11 flex-none cursor-pointer items-center justify-center rounded-full bg-red text-white active:scale-[0.96]"
       >
         {playing ? (
           <Pause className="h-4 w-4 fill-current" aria-hidden="true" />
@@ -221,7 +221,7 @@ export function PlayerControls({
           type="button"
           aria-label="Tela cheia"
           onClick={onFullscreen}
-          className="flex h-8 w-8 flex-none items-center justify-center text-text/80 hover:text-text"
+          className="flex h-8 w-8 flex-none cursor-pointer items-center justify-center text-text/80 hover:text-text"
         >
           <Maximize className="h-4 w-4" aria-hidden="true" />
         </button>

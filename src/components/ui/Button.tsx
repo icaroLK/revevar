@@ -78,7 +78,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-md font-semibold transition active:scale-[0.97]',
+    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-semibold transition active:scale-[0.97]',
     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-tint',
     'disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100',
     sizeClasses[size],

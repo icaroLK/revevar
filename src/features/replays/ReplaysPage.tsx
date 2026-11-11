@@ -257,7 +257,7 @@ export function ReplaysPage() {
           <button
             type="button"
             onClick={showNewReplays}
-            className="mb-4 inline-flex h-10 items-center gap-2 rounded-full border border-red bg-red-tint px-4 text-sm font-semibold text-white"
+            className="mb-4 inline-flex h-10 cursor-pointer items-center gap-2 rounded-full border border-red bg-red-tint px-4 text-sm font-semibold text-white"
           >
             Novos replays · Ver
           </button>

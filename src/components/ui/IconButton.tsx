@@ -41,7 +41,7 @@ export function IconButton(props: IconButtonProps) {
   const { variant = 'secondary', className, children } = props
 
   const classes = cn(
-    'inline-flex h-11 w-11 flex-none items-center justify-center rounded-md transition active:scale-[0.94]',
+    'inline-flex h-11 w-11 flex-none cursor-pointer items-center justify-center rounded-md transition active:scale-[0.94]',
     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-tint',
     'disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100',
     variantClasses[variant],
