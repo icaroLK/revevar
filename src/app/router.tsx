@@ -1,7 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, type RouteObject } from 'react-router-dom'
+import { DevUiPage } from '../features/dev-ui/DevUiPage'
 
 // Placeholder route tree. Real pages replace this starting at M4 (app shell) / M5 (Início).
-export const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: '/',
     element: (
@@ -17,4 +18,11 @@ export const router = createBrowserRouter([
       </main>
     ),
   },
-])
+]
+
+// UI kit review page — only reachable in dev builds, never shipped to production.
+if (import.meta.env.DEV) {
+  routes.push({ path: '/dev/ui', element: <DevUiPage /> })
+}
+
+export const router = createBrowserRouter(routes)

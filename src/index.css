@@ -32,7 +32,8 @@
   --radius-2xl: 22px;
   --radius-player: 16px;
 
-  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 16px 40px rgba(0, 0, 0, 0.35);
   --shadow-button: 0 10px 30px rgba(225, 6, 19, 0.35);
 }
 

@@ -20,5 +20,10 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // Destructuring-to-omit (`const { as: _as, ...rest } = props`) is the
+      // idiomatic way to strip custom props before spreading onto a DOM node.
+      '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+    },
   },
 ])
