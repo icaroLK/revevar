@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../../components/ui/Button'
 import { IconButton } from '../../components/ui/IconButton'
 import { Thumbnail } from '../../components/ui/Thumbnail'
+import { useDownloadFlow } from '../download/DownloadFlowProvider'
 import { formatDuration, formatRelativeDay, formatTime } from '../../lib/dates'
 import type { ReplayEvent } from '../../lib/api/types'
 import type { CameraFilter } from './filters'
@@ -14,11 +15,15 @@ type ReplayCardProps = {
 
 export function ReplayCard({ event, camera }: ReplayCardProps) {
   const location = useLocation()
+  const { requestDownload } = useDownloadFlow()
   const visibleClips =
     camera === 'ambas'
       ? event.clips
       : event.clips.filter((clip) => String(clip.cameraIndex) === camera)
   const firstVisibleIndex = visibleClips[0]?.cameraIndex
+  const downloadableClipIds = visibleClips
+    .filter((clip) => clip.status === 'ready')
+    .map((clip) => clip.id)
   const allClipsFailed = event.clips.every((clip) => clip.status === 'failed')
   const href = `/replays/${event.id}${camera !== 'ambas' ? `?camera=${camera}` : ''}`
   const timeLabel = formatTime(event.pressedAt)
@@ -71,8 +76,10 @@ export function ReplayCard({ event, camera }: ReplayCardProps) {
             <span className="md:hidden">Ver</span>
           </Button>
           {!allClipsFailed && (
-            // Wired to the real download flow (modal + consent) at M8.
-            <IconButton aria-label={`Baixar replay das ${timeLabel}`}>
+            <IconButton
+              aria-label={`Baixar replay das ${timeLabel}`}
+              onClick={() => requestDownload(downloadableClipIds)}
+            >
               <Download className="h-[18px] w-[18px]" aria-hidden="true" />
             </IconButton>
           )}

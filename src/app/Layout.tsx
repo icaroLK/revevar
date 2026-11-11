@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
+import { DownloadFlowProvider } from '../features/download/DownloadFlowProvider'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { MobileMenu } from './MobileMenu'
@@ -18,17 +19,19 @@ export function Layout() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header
-        menuOpen={menuOpen}
-        onToggleMenu={() => setMenuOpen((open) => !open)}
-      />
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <div className="flex-1">
-        <Outlet />
+    <DownloadFlowProvider>
+      <div className="flex min-h-screen flex-col">
+        <Header
+          menuOpen={menuOpen}
+          onToggleMenu={() => setMenuOpen((open) => !open)}
+        />
+        <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+        <div className="flex-1">
+          <Outlet />
+        </div>
+        <Footer />
+        <ScrollRestoration />
       </div>
-      <Footer />
-      <ScrollRestoration />
-    </div>
+    </DownloadFlowProvider>
   )
 }

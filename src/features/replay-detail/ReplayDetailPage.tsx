@@ -12,6 +12,7 @@ import {
   VideoPlayer,
   type VideoPlayerHandle,
 } from '../../components/ui/VideoPlayer'
+import { useDownloadFlow } from '../download/DownloadFlowProvider'
 import { ApiError } from '../../lib/api/errors'
 import {
   useClubs,
@@ -286,7 +287,7 @@ export function ReplayDetailPage() {
               A marca vermelha na barra é o momento em que o botão foi apertado.
             </p>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-4">
               <ActionsRow
                 view={view}
                 cam1={cam1}
@@ -417,49 +418,88 @@ function ActionsRow({
   cam2: Clip | undefined
   eventId: string
 }) {
+  const { requestDownload, storedEmail, forgetLead } = useDownloadFlow()
+
   if (view === 'lado') {
     const bothFailed = cam1?.status === 'failed' && cam2?.status === 'failed'
+    const clipIds = [cam1, cam2]
+      .filter((c) => c?.status === 'ready')
+      .map((c) => c!.id)
     return (
-      <>
-        {!bothFailed && (
-          <Button
-            size="lg"
-            icon={<Download className="h-[18px] w-[18px]" aria-hidden="true" />}
-          >
-            Baixar os 2 ângulos
-          </Button>
-        )}
-        <ShareActions eventId={eventId} />
-      </>
+      <div className="flex w-full flex-col gap-2">
+        <div className="flex flex-wrap gap-2">
+          {!bothFailed && (
+            <Button
+              size="lg"
+              icon={
+                <Download className="h-[18px] w-[18px]" aria-hidden="true" />
+              }
+              onClick={() => requestDownload(clipIds)}
+            >
+              Baixar os 2 ângulos
+            </Button>
+          )}
+          <ShareActions eventId={eventId} />
+        </div>
+        <LeadLine storedEmail={storedEmail} onForget={forgetLead} />
+      </div>
     )
   }
 
   const activeIndex = view === 'c2' ? 2 : 1
-  const activeFailed = (view === 'c2' ? cam2 : cam1)?.status === 'failed'
+  const activeClip = view === 'c2' ? cam2 : cam1
+  const activeFailed = activeClip?.status === 'failed'
   const otherClip = view === 'c2' ? cam1 : cam2
   const otherIndex = view === 'c2' ? 1 : 2
 
   return (
-    <>
-      {!activeFailed && (
-        <Button
-          size="lg"
-          icon={<Download className="h-[18px] w-[18px]" aria-hidden="true" />}
-        >
-          Baixar câmera {activeIndex}
-        </Button>
-      )}
-      {otherClip && otherClip.status !== 'failed' && (
-        <Button
-          variant="secondary"
-          size="lg"
-          icon={<Download className="h-[18px] w-[18px]" aria-hidden="true" />}
-        >
-          Baixar câmera {otherIndex}
-        </Button>
-      )}
-      <ShareActions eventId={eventId} />
-    </>
+    <div className="flex w-full flex-col gap-2">
+      <div className="flex flex-wrap gap-2">
+        {!activeFailed && activeClip && (
+          <Button
+            size="lg"
+            icon={<Download className="h-[18px] w-[18px]" aria-hidden="true" />}
+            onClick={() => requestDownload([activeClip.id])}
+          >
+            Baixar câmera {activeIndex}
+          </Button>
+        )}
+        {otherClip && otherClip.status !== 'failed' && (
+          <Button
+            variant="secondary"
+            size="lg"
+            icon={<Download className="h-[18px] w-[18px]" aria-hidden="true" />}
+            onClick={() => requestDownload([otherClip.id])}
+          >
+            Baixar câmera {otherIndex}
+          </Button>
+        )}
+        <ShareActions eventId={eventId} />
+      </div>
+      <LeadLine storedEmail={storedEmail} onForget={forgetLead} />
+    </div>
+  )
+}
+
+function LeadLine({
+  storedEmail,
+  onForget,
+}: {
+  storedEmail: string | null
+  onForget: () => void
+}) {
+  if (!storedEmail) return null
+  return (
+    <p className="text-xs text-subtle">
+      Baixando como {storedEmail} ·{' '}
+      <button
+        type="button"
+        onClick={onForget}
+        className="underline hover:text-text"
+      >
+        trocar
+      </button>
+    </p>
   )
 }
 
