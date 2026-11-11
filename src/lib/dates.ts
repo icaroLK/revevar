@@ -1,4 +1,4 @@
-import { format, isToday, isYesterday, parseISO } from 'date-fns'
+import { format, isToday, isTomorrow, isYesterday, parseISO } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 /** "19:43" */
@@ -24,4 +24,13 @@ export function formatDuration(totalSeconds: number): string {
 /** "yyyy-MM-dd" in local time, for API date params and availability lookups. */
 export function toLocalDateString(date: Date): string {
   return format(date, 'yyyy-MM-dd')
+}
+
+/** "19:43 de amanhã" / "19:43 de hoje" / "19:43 de 10 de nov." — the expiry badge text. */
+export function formatExpiry(expiresAtIso: string): string {
+  const expires = parseISO(expiresAtIso)
+  const time = formatTime(expiresAtIso)
+  if (isTomorrow(expires)) return `${time} de amanhã`
+  if (isToday(expires)) return `${time} de hoje`
+  return `${time} de ${format(expires, "d 'de' MMM", { locale: ptBR })}`
 }

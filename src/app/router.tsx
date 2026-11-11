@@ -1,6 +1,7 @@
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 import { DevUiPage } from '../features/dev-ui/DevUiPage'
 import { HomePage } from '../features/home/HomePage'
+import { ReplayDetailPage } from '../features/replay-detail/ReplayDetailPage'
 import { ReplaysPage } from '../features/replays/ReplaysPage'
 import { Layout } from './Layout'
 import { NotFoundPage } from './NotFoundPage'
@@ -13,6 +14,7 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'replays', element: <ReplaysPage /> },
+      { path: 'replays/:eventId', element: <ReplayDetailPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

@@ -1,5 +1,5 @@
 import { Download, Play } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../../components/ui/Button'
 import { IconButton } from '../../components/ui/IconButton'
 import { Thumbnail } from '../../components/ui/Thumbnail'
@@ -13,6 +13,7 @@ type ReplayCardProps = {
 }
 
 export function ReplayCard({ event, camera }: ReplayCardProps) {
+  const location = useLocation()
   const visibleClips =
     camera === 'ambas'
       ? event.clips
@@ -21,11 +22,14 @@ export function ReplayCard({ event, camera }: ReplayCardProps) {
   const allClipsFailed = event.clips.every((clip) => clip.status === 'failed')
   const href = `/replays/${event.id}${camera !== 'ambas' ? `?camera=${camera}` : ''}`
   const timeLabel = formatTime(event.pressedAt)
+  // So the replay detail page's "Voltar aos replays" returns to this exact filtered view.
+  const backState = { from: `${location.pathname}${location.search}` }
 
   return (
     <article className="flex flex-col gap-3 rounded-xl border border-border bg-gradient-to-b from-card-from to-card-to p-3 shadow-card">
       <Link
         to={href}
+        state={backState}
         aria-label={`Assistir replay das ${timeLabel}`}
         className="grid gap-2"
         style={{
@@ -60,6 +64,7 @@ export function ReplayCard({ event, camera }: ReplayCardProps) {
           <Button
             as="link"
             to={href}
+            state={backState}
             icon={<Play className="h-3 w-3" aria-hidden="true" />}
           >
             <span className="hidden md:inline">Assistir</span>

@@ -84,12 +84,16 @@ export function useAvailability(
   })
 }
 
-export function useReplay(eventId: string | undefined) {
+export function useReplay(
+  eventId: string | undefined,
+  options?: { refetchInterval?: number | false },
+) {
   return useQuery({
     queryKey: queryKeys.replay(eventId ?? ''),
     queryFn: () =>
       apiRequest(`/replays/${eventId}`, replayDetailResponseSchema),
     enabled: Boolean(eventId),
+    refetchInterval: options?.refetchInterval,
   })
 }
 

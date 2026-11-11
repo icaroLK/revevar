@@ -56,8 +56,10 @@ function buildClip(
     cameraIndex,
     cameraLabel: `Câmera ${cameraIndex}`,
     status,
-    thumbnailUrl: null,
-    streamUrl: null,
+    // Synthetic local sample (same file for every ready clip) — see
+    // public/mock-media — real per-clip media comes from the real backend.
+    thumbnailUrl: isUsable ? '/mock-media/sample-thumb.jpg' : null,
+    streamUrl: isUsable ? '/mock-media/sample.mp4' : null,
     durationSec: isUsable ? 35 : null,
     sizeBytes: isUsable ? 18_500_000 + cameraIndex * 1_200_000 : null,
   }

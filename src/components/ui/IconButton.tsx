@@ -3,6 +3,7 @@ import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from 'react'
+import { Link, type LinkProps } from 'react-router-dom'
 import { cn } from '../../lib/cn'
 
 type IconButtonVariant = 'secondary' | 'ghost'
@@ -22,8 +23,13 @@ type IconButtonAsAnchor = BaseProps & { as: 'a' } & Omit<
     AnchorHTMLAttributes<HTMLAnchorElement>,
     'aria-label'
   >
+type IconButtonAsLink = BaseProps & { as: 'link' } & Omit<
+    LinkProps,
+    'aria-label' | 'className' | 'children'
+  >
 
-export type IconButtonProps = IconButtonAsButton | IconButtonAsAnchor
+export type IconButtonProps =
+  IconButtonAsButton | IconButtonAsAnchor | IconButtonAsLink
 
 const variantClasses: Record<IconButtonVariant, string> = {
   secondary:
@@ -54,6 +60,21 @@ export function IconButton(props: IconButtonProps) {
       <a className={classes} {...anchorProps}>
         {children}
       </a>
+    )
+  }
+
+  if (props.as === 'link') {
+    const {
+      as: _as,
+      variant: _v,
+      className: _cl,
+      children: _c,
+      ...linkProps
+    } = props
+    return (
+      <Link className={classes} {...linkProps}>
+        {children}
+      </Link>
     )
   }
 
