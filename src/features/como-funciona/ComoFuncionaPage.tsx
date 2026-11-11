@@ -1,11 +1,12 @@
 import { Button } from '../../components/ui/Button'
 import { AccordionItem } from '../../components/ui/Accordion'
 import { useConfig } from '../../lib/api/hooks'
+import { formatRetention } from '../../lib/dates'
 import { COMO_FUNCIONA_STEPS, FAQ_ITEMS } from '../../content/comoFunciona'
 
 export function ComoFuncionaPage() {
   const { data: config } = useConfig()
-  const retentionHours = config?.retentionHours ?? 24
+  const retentionText = formatRetention(config?.retentionHours ?? 24)
   const whatsappUrl = config?.whatsappNumber
     ? `https://wa.me/${config.whatsappNumber}`
     : null
@@ -60,7 +61,7 @@ export function ComoFuncionaPage() {
           <div className="flex flex-col border-t border-border">
             {FAQ_ITEMS.map((item) => (
               <AccordionItem key={item.q} question={item.q}>
-                {item.a.replace('{retentionHours}', String(retentionHours))}
+                {item.a.replace('{retentionText}', retentionText)}
               </AccordionItem>
             ))}
           </div>

@@ -20,16 +20,12 @@ export const COMO_FUNCIONA_STEPS: ComoFuncionaStep[] = [
 
 export type FaqItem = { q: string; a: string }
 
-// {retentionHours} is replaced with the real value from GET /config when rendered.
-// Placeholder set — client will send the final list (build-plan.md M9).
+// {retentionText} is replaced with the real value from GET /config when rendered
+// (e.g. "7 dias"). Placeholder set — client will send the final list (build-plan.md M9).
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    q: 'Preciso de cadastro para ver meu replay?',
-    a: 'Não. Os replays ficam abertos no site. É só escolher o clube, a quadra, o dia e o horário do seu jogo.',
-  },
-  {
     q: 'Quanto tempo o vídeo fica disponível?',
-    a: 'Os replays ficam disponíveis por {retentionHours} horas. Baixe o seu antes disso.',
+    a: 'Os replays ficam disponíveis por {retentionText}. Baixe o seu antes disso.',
   },
   {
     q: 'Por que aparecem dois vídeos do mesmo lance?',

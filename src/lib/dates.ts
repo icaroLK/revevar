@@ -21,6 +21,15 @@ export function formatDuration(totalSeconds: number): string {
   return `${minutes}:${String(seconds).padStart(2, '0')}`
 }
 
+/** "7 dias" for a whole number of days, else "36 horas" — used for retention copy. */
+export function formatRetention(hours: number): string {
+  if (hours % 24 === 0) {
+    const days = hours / 24
+    return days === 1 ? '1 dia' : `${days} dias`
+  }
+  return `${hours} horas`
+}
+
 /** "yyyy-MM-dd" in local time, for API date params and availability lookups. */
 export function toLocalDateString(date: Date): string {
   return format(date, 'yyyy-MM-dd')

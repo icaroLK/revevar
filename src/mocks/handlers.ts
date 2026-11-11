@@ -31,7 +31,7 @@ const downloadRequestSchema = z.object({
 export const handlers: HttpHandler[] = [
   http.get('/api/v1/config', () =>
     HttpResponse.json({
-      retentionHours: 24,
+      retentionHours: 168, // 7 days — per Ícaro, 2026-11-11 (real value still to be confirmed with the client/backend)
       whatsappNumber: '5541999999999',
       instagramHandle: 'revevar',
       consentVersion: CONSENT_VERSION,

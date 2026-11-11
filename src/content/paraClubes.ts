@@ -10,9 +10,8 @@ export const PARA_CLUBES_FEATURES: ClubFeature[] = [
     text: 'Cada vez que o botão é apertado, o lance fica disponível no site com os dois ângulos.',
   },
   {
-    // Pending client confirmation — meeting 2026-11-10.
     title: 'Seu clube nos vídeos',
-    text: 'Os replays levam a identidade do seu clube quando os atletas compartilham. [a confirmar com o cliente]',
+    text: 'Os replays levam a identidade do seu clube quando os atletas compartilham.',
   },
   {
     title: 'Suporte',
