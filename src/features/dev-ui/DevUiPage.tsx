@@ -32,6 +32,7 @@ function Section({
 
 export function DevUiPage() {
   const [day, setDay] = useState<'hoje' | 'ontem'>('hoje')
+  const [hour, setHour] = useState<'todas' | '19h' | '20h'>('todas')
   const [club, setClub] = useState('tupi')
   const [modalOpen, setModalOpen] = useState(false)
   const { show } = useToast()
@@ -80,11 +81,16 @@ export function DevUiPage() {
       </Section>
 
       <Section title="Chip">
-        <Chip active count={6}>
-          Todas
-        </Chip>
-        <Chip count={3}>19h</Chip>
-        <Chip>20h</Chip>
+        {(['todas', '19h', '20h'] as const).map((value) => (
+          <Chip
+            key={value}
+            active={hour === value}
+            count={value === 'todas' ? 6 : 3}
+            onClick={() => setHour(value)}
+          >
+            {value === 'todas' ? 'Todas' : value}
+          </Chip>
+        ))}
       </Section>
 
       <Section title="SelectField">

@@ -9,7 +9,7 @@ import {
 import { cn } from '../../lib/cn'
 
 type ToastVariant = 'default' | 'error'
-type ToastItem = { id: number; message: string; variant: ToastVariant }
+type ToastState = { message: string; variant: ToastVariant } | null
 
 type ToastContextValue = {
   show: (message: string, variant?: ToastVariant) => void
@@ -20,16 +20,14 @@ const ToastContext = createContext<ToastContextValue | null>(null)
 const DISPLAY_MS = 3000
 
 export function ToastProvider({ children }: { children: ReactNode }) {
-  const [toasts, setToasts] = useState<ToastItem[]>([])
-  const nextId = useRef(0)
+  const [toast, setToast] = useState<ToastState>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const show = useCallback(
     (message: string, variant: ToastVariant = 'default') => {
-      const id = nextId.current++
-      setToasts((prev) => [...prev, { id, message, variant }])
-      setTimeout(() => {
-        setToasts((prev) => prev.filter((t) => t.id !== id))
-      }, DISPLAY_MS)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      setToast({ message, variant })
+      timeoutRef.current = setTimeout(() => setToast(null), DISPLAY_MS)
     },
     [],
   )
@@ -37,10 +35,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ show }}>
       {children}
-      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex flex-col items-center gap-2 md:items-end md:pr-6">
-        {toasts.map((toast) => (
+      <div className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center md:justify-end md:pr-6">
+        {toast && (
           <div
-            key={toast.id}
             role="status"
             className={cn(
               'pointer-events-auto rounded-full border px-4 py-2.5 text-sm font-medium shadow-card',
@@ -51,7 +48,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           >
             {toast.message}
           </div>
-        ))}
+        )}
       </div>
     </ToastContext.Provider>
   )
