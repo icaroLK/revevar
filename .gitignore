@@ -1,14 +1,22 @@
+# Private client docs (ERS, notes, pricing): never commit
 docs/private/
+
+# Env
 .env
 .env.*
 !.env.example
+
+# Dependencies and builds
 node_modules/
-__pycache__/
-*.pyc
-.venv/
-venv/
 dist/
 build/
+coverage/
+
+# OS / editor
 .DS_Store
 Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
 *.log

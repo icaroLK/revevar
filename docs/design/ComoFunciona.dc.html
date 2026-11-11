@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Revê VAR · Como funciona</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#08090A}
+a{color:#FAFAFA;text-decoration:none}a:hover{color:#FFFFFF}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+<div style="background: #08090A; color: #FAFAFA; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(8,9,10,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07)">
+<div style="max-width: 1180px; margin: 0 auto; padding: 14px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Home.dc.html" aria-label="Revê VAR, página inicial" style="display: flex; align-items: center"><img src="/_blob/2b3b6c2b89d16a6d72ab57a759328966" alt="Revê VAR" style="height: 40px; width: auto; display: block"></a>
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 14px; font-weight: 500">
+<a href="Replays.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #A1A1AA">Replays</a>
+<a href="ComoFunciona.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.07); color: #FAFAFA">Como funciona</a>
+<a href="Clubes.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #A1A1AA">Para clubes</a>
+</nav>
+<a href="https://wa.me/" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #FAFAFA; font-size: 14px; font-weight: 600">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+Fale conosco</a>
+</div>
+</header>
+
+<section style="max-width: 1180px; margin: 0 auto; padding: 72px 28px 48px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #71717A">Ajuda</span>
+<h1 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 64px; text-transform: uppercase; line-height: 1">Como funciona</h1>
+<p style="margin: 0; max-width: 600px; font-size: 17px; line-height: 1.65; color: #A1A1AA">As câmeras da quadra gravam o jogo o tempo todo. Quando alguém aperta o botão, o sistema salva o lance e publica aqui.</p>
+</section>
+
+<section aria-label="Passo a passo" style="max-width: 1180px; margin: 0 auto; padding: 0 28px 88px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<div style="position: relative; overflow: hidden; padding: 28px; border-radius: 20px; background: linear-gradient(180deg, #141518 0%, #0F1012 100%); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset; display: flex; flex-direction: column; gap: 14px">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: rgba(225,6,19,0.14); border: 1px solid rgba(225,6,19,0.4); font-size: 15px; font-weight: 700; color: #FFFFFF">{{st.n}}</span>
+<h2 style="margin: 0; font-size: 20px; font-weight: 700">{{st.title}}</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: #A1A1AA">{{st.text}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="faq" style="border-top: 1px solid rgba(255,255,255,0.06)">
+<div style="max-width: 780px; margin: 0 auto; padding: 80px 28px 104px">
+<h2 id="faq" style="margin: 0 0 28px; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 40px; text-transform: uppercase; line-height: 1">Dúvidas comuns</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.08)">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="5">
+<details style="border-bottom: 1px solid rgba(255,255,255,0.08); padding: 22px 4px">
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 16px; font-weight: 600">{{q.q}}
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+<p style="margin: 12px 0 0; font-size: 15px; line-height: 1.65; color: #A1A1AA">{{q.a}}</p>
+</details>
+</sc-for>
+</div>
+<div style="margin-top: 32px; padding: 20px 22px; border-radius: 16px; background: #111214; border: 1px solid rgba(255,255,255,0.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
+<span style="font-size: 15px; color: #D4D4D8">Não achou sua resposta?</span>
+<a href="https://wa.me/" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 10px; background: #E10613; color: #FFFFFF; font-size: 14px; font-weight: 700">Falar no WhatsApp</a>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(255,255,255,0.07)">
+<div style="max-width: 1180px; margin: 0 auto; padding: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 13px; color: #71717A">
+<span>© 2026 Revê VAR · Curitiba/PR</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+steps: [
+{ n: '1', title: 'O jogo é gravado', text: 'As câmeras da quadra filmam a partida continuamente. Ninguém precisa fazer nada.' },
+{ n: '2', title: 'Alguém aperta o botão', text: 'O botão fica na beira da quadra. O sistema salva os 30 segundos anteriores e mais 5 segundos depois.' },
+{ n: '3', title: 'O replay aparece aqui', text: 'Em segundos o lance fica disponível na página de replays, com um vídeo para cada câmera, pronto para assistir e baixar.' }
+],
+faq: [
+{ q: 'Preciso de cadastro para ver meu replay?', a: 'Não. Os replays ficam abertos no site. É só escolher o clube, a quadra, o dia e o horário do seu jogo.' },
+{ q: 'Quanto tempo o vídeo fica disponível?', a: 'Os replays ficam disponíveis por [prazo a confirmar]. Baixe o seu antes disso.' },
+{ q: 'Por que aparecem dois vídeos do mesmo lance?', a: 'A quadra tem duas câmeras. Você vê a mesma jogada de dois ângulos e baixa o que preferir.' },
+{ q: 'O vídeo não apareceu. O que faço?', a: 'Confira o clube, a quadra, o dia e o horário no filtro. Se mesmo assim não encontrar, fale com a gente pelo WhatsApp.' },
+{ q: 'Posso compartilhar o vídeo?', a: 'Sim. Baixe o MP4 ou envie o link direto pelo WhatsApp.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

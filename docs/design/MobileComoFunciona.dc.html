@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Revê VAR · Como funciona celular</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#08090A}
+a{color:#FAFAFA;text-decoration:none}
+details summary{list-style:none;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 1800px; box-sizing: border-box; background: #08090A; color: #FAFAFA; font-family: 'Inter', system-ui, sans-serif">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.07)">
+<a href="MobileHome.dc.html" aria-label="Revê VAR, página inicial"><img src="/_blob/2b3b6c2b89d16a6d72ab57a759328966" alt="Revê VAR" style="height: 34px; width: auto; display: block"></a>
+<div style="display: flex; gap: 8px">
+<a href="https://wa.me/" aria-label="Fale conosco no WhatsApp" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></a>
+<a href="MobileMenu.dc.html" aria-label="Abrir menu" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16"/><path d="M4 16h16"/></svg></a>
+</div>
+</header>
+
+<section style="padding: 32px 16px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #71717A">Ajuda</span>
+<h1 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 44px; text-transform: uppercase; line-height: 1">Como funciona</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #A1A1AA">As câmeras gravam o jogo o tempo todo. Quando alguém aperta o botão, o lance aparece aqui.</p>
+</section>
+
+<section aria-label="Passo a passo" style="padding: 0 16px 32px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<div style="padding: 20px; border-radius: 18px; background: linear-gradient(180deg, #141518 0%, #0F1012 100%); border: 1px solid rgba(255,255,255,0.08); display: flex; gap: 14px">
+<span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; flex: none; border-radius: 10px; background: rgba(225,6,19,0.14); border: 1px solid rgba(225,6,19,0.4); font-size: 14px; font-weight: 700">{{st.n}}</span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 17px; font-weight: 700">{{st.title}}</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #A1A1AA">{{st.text}}</p>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section aria-labelledby="faq" style="padding: 28px 16px 24px; border-top: 1px solid rgba(255,255,255,0.06)">
+<h2 id="faq" style="margin: 0 0 16px; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 30px; text-transform: uppercase; line-height: 1">Dúvidas comuns</h2>
+<div style="display: flex; flex-direction: column; border-top: 1px solid rgba(255,255,255,0.08)">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="5">
+<details style="border-bottom: 1px solid rgba(255,255,255,0.08); padding: 18px 2px">
+<summary style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600">{{q.q}}
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+<p style="margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: #A1A1AA">{{q.a}}</p>
+</details>
+</sc-for>
+</div>
+</section>
+
+<section style="padding: 8px 16px 36px">
+<a href="https://wa.me/" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 54px; border-radius: 14px; background: #E10613; color: #FFFFFF; font-size: 15px; font-weight: 700; box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+Ainda com dúvida? Fale com a gente</a>
+</section>
+
+<footer style="padding: 24px 16px 32px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 12px; color: #71717A">© 2026 Revê VAR · Curitiba/PR</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+steps: [
+{ n: '1', title: 'O jogo é gravado', text: 'As câmeras da quadra filmam a partida continuamente.' },
+{ n: '2', title: 'Alguém aperta o botão', text: 'O sistema salva os 30 segundos anteriores e mais 5 depois.' },
+{ n: '3', title: 'O replay aparece aqui', text: 'Em segundos o lance fica disponível, com um vídeo para cada câmera.' }
+],
+faq: [
+{ q: 'Preciso de cadastro para ver meu replay?', a: 'Não. É só escolher o clube, a quadra, o dia e o horário do seu jogo.' },
+{ q: 'Quanto tempo o vídeo fica disponível?', a: 'Os replays ficam disponíveis por [prazo a confirmar]. Baixe o seu antes disso.' },
+{ q: 'Por que aparecem dois vídeos do mesmo lance?', a: 'A quadra tem duas câmeras. Você vê a jogada de dois ângulos.' },
+{ q: 'O vídeo não apareceu. O que faço?', a: 'Confira os filtros. Se não encontrar, fale com a gente pelo WhatsApp.' },
+{ q: 'Posso compartilhar o vídeo?', a: 'Sim. Baixe o MP4 ou envie o link pelo WhatsApp.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

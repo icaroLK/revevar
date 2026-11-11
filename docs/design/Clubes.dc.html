@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Revê VAR · Para clubes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;background:#08090A}
+a{color:#FAFAFA;text-decoration:none}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="background: #08090A; color: #FAFAFA; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(8,9,10,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07)">
+<div style="max-width: 1180px; margin: 0 auto; padding: 14px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Home.dc.html" aria-label="Revê VAR, página inicial" style="display: flex; align-items: center"><img src="/_blob/2b3b6c2b89d16a6d72ab57a759328966" alt="Revê VAR" style="height: 40px; width: auto; display: block"></a>
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 14px; font-weight: 500">
+<a href="Replays.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #A1A1AA">Replays</a>
+<a href="ComoFunciona.dc.html" style="padding: 10px 14px; border-radius: 8px; color: #A1A1AA">Como funciona</a>
+<a href="Clubes.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.07); color: #FAFAFA">Para clubes</a>
+</nav>
+<a href="https://wa.me/" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); color: #FAFAFA; font-size: 14px; font-weight: 600">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+Fale conosco</a>
+</div>
+</header>
+
+<section style="position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.06)">
+<svg viewBox="0 0 1440 520" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="1.5"><rect x="80" y="40" width="1280" height="440" rx="4"/><line x1="720" y1="40" x2="720" y2="480"/><circle cx="720" cy="260" r="95"/></g></svg>
+<div style="position: relative; max-width: 1180px; margin: 0 auto; padding: 96px 28px 88px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #71717A">Para clubes</span>
+<h1 style="margin: 0; max-width: 760px; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 72px; text-transform: uppercase; line-height: 1">Replay automático<br><span style="color: #E10613">no seu clube</span></h1>
+<p style="margin: 0; max-width: 600px; font-size: 18px; line-height: 1.65; color: #A1A1AA">Instalamos câmeras, botão e sistema. Seus atletas recebem o replay dos lances, e o seu clube aparece em cada vídeo que eles compartilham.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 10px">
+<a href="https://wa.me/" style="display: inline-flex; align-items: center; gap: 10px; background: #E10613; color: #FFFFFF; padding: 16px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 30px rgba(225,6,19,0.35)">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+Falar no WhatsApp</a>
+<a href="Replays.dc.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 22px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); color: #E4E4E7; font-size: 15px; font-weight: 600">Ver replays de exemplo</a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="incluso" style="max-width: 1180px; margin: 0 auto; padding: 80px 28px 72px">
+<h2 id="incluso" style="margin: 0 0 28px; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 40px; text-transform: uppercase; line-height: 1">O que está incluso</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="4">
+<div style="padding: 26px; border-radius: 20px; background: linear-gradient(180deg, #141518 0%, #0F1012 100%); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset; display: flex; flex-direction: column; gap: 12px">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: #E10613; box-shadow: 0 0 0 5px rgba(225,6,19,0.16)"></span>
+<h3 style="margin: 4px 0 0; font-size: 18px; font-weight: 700">{{it.title}}</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.65; color: #A1A1AA">{{it.text}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1180px; margin: 0 auto; padding: 0 28px 104px">
+<div style="padding: 44px; border-radius: 24px; background: linear-gradient(180deg, #16171A 0%, #111214 100%); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset, 0 30px 80px rgba(0,0,0,0.45); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 36px; text-transform: uppercase; line-height: 1.05">Quer levar para o seu clube?</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #A1A1AA">Conta pra gente quantas quadras você tem e marcamos uma visita.</p>
+</div>
+<a href="https://wa.me/" style="display: inline-flex; align-items: center; gap: 10px; background: #FAFAFA; color: #08090A; padding: 16px 24px; border-radius: 12px; font-size: 15px; font-weight: 700">Falar no WhatsApp
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(255,255,255,0.07)">
+<div style="max-width: 1180px; margin: 0 auto; padding: 28px; font-size: 13px; color: #71717A">© 2026 Revê VAR · Curitiba/PR</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+items: [
+{ title: 'Câmeras e botão', text: 'Duas câmeras por quadra e um botão sem fio na beira do campo. Nós instalamos e configuramos.' },
+{ title: 'Replay automático', text: 'Cada vez que o botão é apertado, o lance fica disponível no site com os dois ângulos.' },
+{ title: 'Seu clube nos vídeos', text: 'Os replays levam a identidade do seu clube quando os atletas compartilham. [a confirmar]' },
+{ title: 'Suporte', text: 'Acompanhamos o funcionamento e resolvemos problemas direto pelo WhatsApp.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>
