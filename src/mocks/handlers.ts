@@ -1,5 +1,6 @@
 import { http, HttpResponse, type HttpHandler } from 'msw'
 import { z } from 'zod'
+import { toLocalDateString } from '../lib/dates'
 import {
   EXPIRED_EVENT_ID,
   MOCK_CLUB,
@@ -9,13 +10,6 @@ import {
 } from './data'
 
 const CONSENT_VERSION = '2026-11-v1'
-
-function toLocalDateString(date: Date): string {
-  const y = date.getFullYear()
-  const m = String(date.getMonth() + 1).padStart(2, '0')
-  const d = String(date.getDate()).padStart(2, '0')
-  return `${y}-${m}-${d}`
-}
 
 function errorResponse(
   status: number,

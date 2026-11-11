@@ -4,25 +4,13 @@ import { Button } from '../../components/ui/Button'
 import { EmptyState, ErrorState } from '../../components/ui/EmptyState'
 import { Skeleton } from '../../components/ui/Skeleton'
 import { Thumbnail } from '../../components/ui/Thumbnail'
+import { formatDuration, formatRelativeDay, formatTime } from '../../lib/dates'
 import { useClubs, useCourts, useReplays } from '../../lib/api/hooks'
 import type { ReplayEvent } from '../../lib/api/types'
 
 const RECENT_REFETCH_MS = 60_000
 const EMPTY_TODAY_MESSAGE =
   'Nenhum replay ainda hoje. Aperte o botão na quadra depois de um lance!'
-
-function formatTime(iso: string): string {
-  return new Date(iso).toLocaleTimeString('pt-BR', {
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
-function formatDuration(totalSeconds: number): string {
-  const minutes = Math.floor(totalSeconds / 60)
-  const seconds = Math.round(totalSeconds % 60)
-  return `${minutes}:${String(seconds).padStart(2, '0')}`
-}
 
 export function HomePage() {
   const clubsQuery = useClubs()
@@ -200,7 +188,8 @@ function HeroReplayCard({
             Último replay
           </span>
           <span className="text-[17px] font-bold">
-            Hoje, {formatTime(featured.pressedAt)}
+            {formatRelativeDay(featured.pressedAt)},{' '}
+            {formatTime(featured.pressedAt)}
           </span>
         </div>
         <div className="flex gap-1.5">
@@ -262,7 +251,8 @@ function FeaturedReplayMobile({
         />
         <div className="flex items-center justify-between px-1 pb-0.5">
           <span className="text-lg font-bold">
-            Hoje, {formatTime(replay.pressedAt)}
+            {formatRelativeDay(replay.pressedAt)},{' '}
+            {formatTime(replay.pressedAt)}
           </span>
           <span className="text-[13px] text-subtle">{replay.courtName}</span>
         </div>
@@ -363,7 +353,7 @@ function RecentReplayCard({ event }: { event: ReplayEvent }) {
       />
       <div className="flex items-center justify-between px-0.5">
         <span className="text-[15px] font-semibold">
-          Hoje, {formatTime(event.pressedAt)}
+          {formatRelativeDay(event.pressedAt)}, {formatTime(event.pressedAt)}
         </span>
         <span className="text-[13px] text-subtle">{event.courtName}</span>
       </div>
@@ -386,7 +376,7 @@ function RecentReplayRow({ event }: { event: ReplayEvent }) {
       />
       <div className="flex flex-1 flex-col">
         <span className="text-base font-bold tabular-nums">
-          Hoje, {formatTime(event.pressedAt)}
+          {formatRelativeDay(event.pressedAt)}, {formatTime(event.pressedAt)}
         </span>
         <span className="text-xs text-subtle">
           {event.courtName} · {event.clips.length} ângulos
